@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local storage</title>
+</head>
+
+<body>
+    <script>
+        // Primitive
+        let companyName = "Rikkei Academy";
+        // Reference: setItem vào localstorage --> chuyển sang JSON - JSON.stritify(data)
+        let arrInt = [3, 5, 7, 9];
+        let arrStudent = [
+            { "studentId": "SV001", "studentName": "Nguyễn Văn A", "age": 22 },
+            { "studentId": "SV002", "studentName": "Nguyễn Văn B", "age": 20 },
+            { "studentId": "SV003", "studentName": "Nguyễn Văn C", "age": 25 }
+        ]
+        // Lưu trữ dữ liệu companyName vào localStorage với key là company
+        localStorage.setItem("company", companyName);
+        // Lấy dữ liệu company từ localStorage
+        let company = localStorage.getItem("company");
+        console.log("Company lấy tử localStorage-->", company);
+        // Lưu trữ dữ liệu arrInt vào localStorage với key là arrInt
+        // JSON.stringify(arrInt): chuyển từ object --> json
+        localStorage.setItem("arrInt", JSON.stringify(arrInt));
+        // JSON --> object: JSON.parse
+        let arrNumber = JSON.parse(localStorage.getItem("arrInt"));
+        console.log(typeof (arrNumber));
+        console.log("arrInt lấy từ localStorage-->", arrNumber);
+        // Lưu trữ và lấy arrStudent ra localStorage
+        localStorage.setItem("arrStudent", JSON.stringify(arrStudent));
+        let students = JSON.parse(localStorage.getItem("arrStudent"));
+        console.log("Students--->", students);
+        // Xóa dữ liệu arrInt trong localStorage
+        localStorage.removeItem("arrInt");
+        // Xóa tất cả dữ liệu trong localStorage
+        localStorage.clear();
+    </script>
+</body>
+
+</html>
